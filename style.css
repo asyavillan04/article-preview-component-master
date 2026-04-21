@@ -1,0 +1,269 @@
+:root {
+    --veryDarkGrayishBlue: hsl(217, 19%, 35%);
+    --desaturatedDarkBlue: hsl(214, 17%, 51%);
+    --grayishBlue: hsl(212, 23%, 69%);
+    --lightGrayishBlue: hsl(210, 46%, 95%);
+    --shadow--: hsl(214, 17%, 51%, 0.1);
+    --previewBorderRadius: 10px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+body {
+    
+    font-family: "Manrope", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+
+    min-height: 100vh;
+    background-color: var(--lightGrayishBlue);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+div.container {
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 900px;
+    height: 350px;
+    margin: auto;
+    border-radius: var(--previewBorderRadius);
+    box-shadow: 20px 50px 30px var(--shadow--);
+    /*position: relative;*/
+}    
+
+img.article-image {
+    height: 100%;
+    width: auto;
+    aspect-ratio: 1;
+    object-fit: cover;
+    object-position: left;
+    border-radius: var(--previewBorderRadius) 0 0 var(--previewBorderRadius);
+}
+
+div.text {
+    padding: 0px;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+div.upper {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+h2, p {
+    margin: 20px;
+}
+
+.articleLink {
+    text-decoration: none;
+    color: var(--veryDarkGrayishBlue);
+}
+
+h1 {
+    color: var(--veryDarkGrayishBlue);
+    font-weight: 800;
+}
+.articleLink:hover {
+    color: var(--desaturatedDarkBlue);
+}
+p {
+    color: var(--desaturatedDarkBlue);
+    font-size: 0.9375rem;
+}
+
+div.bottom {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between; 
+    width: 100%;
+    margin-top: auto;
+    padding-left: 20px;  
+    padding-right: 20px;
+}
+
+div.author {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+img.authorAvatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+div.authorInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.authorName {
+    font-size: 0.875rem;
+    color: var(--veryDarkGrayishBlue);
+    font-weight: 800;
+}
+
+.publishDate {
+    font-size: 0.8125rem;
+    color: var(--grayishBlue);
+}
+
+.shareButton {
+    width: 40px;
+    height: 40px;
+    background-color: var(--lightGrayishBlue);
+    border: none;
+    color: var(--veryDarkGrayishBlue);
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 50%;
+    z-index: 20;
+    position: absolute;
+    vertical-align: middle;
+}
+
+.shareButton:hover {
+    background-color: var(--desaturatedDarkBlue);
+    color: white;
+    cursor: pointer;
+}
+
+.shareMenu {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  position: absolute;
+  background: var(--veryDarkGrayishBlue);
+  box-shadow: 0 10px 25px -5px var(--desaturatedDarkBlue);
+  z-index: 10;
+  pointer-events: none;
+  /* по умолчанию скрыто (без transition, чтобы не мешал) */
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.shareMenu.active {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+@media (min-width: 641px) {
+  .shareWrapper {
+    position: relative;
+  }
+
+  .shareMenu {
+    font-size: 50px;
+    border-radius: var(--previewBorderRadius);
+    bottom: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%) scale(0.95);
+    white-space: nowrap;
+    padding: 10px 25px;
+    opacity: 0;
+    transition: none; /* transition будет в .active */
+  }
+
+  .shareMenu.active {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+
+  .shareMenu::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 14px;
+    height: 14px;
+    background: var(--veryDarkGrayishBlue);
+    border-radius: 2px;
+  }
+}
+
+@media (max-width: 640px) {
+  div.container {
+    flex-direction: column;
+    width: 90vw;
+    height: auto;
+  }
+
+  img.article-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: var(--previewBorderRadius) var(--previewBorderRadius) 0 0;
+  }
+
+  div.bottom {
+    position: relative;
+    overflow: hidden;
+    height: 80px;              /* фиксированная высота */
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .shareMenu {
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0 0 var(--previewBorderRadius) var(--previewBorderRadius);
+    background: var(--veryDarkGrayishBlue);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    transform: translateY(100%);
+    opacity: 1;                /* всегда непрозрачно */
+    transition: none;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .shareMenu.active {
+    transform: translateY(0);
+    pointer-events: auto;
+    transition: transform 0.3s ease;
+  }
+
+  .shareMenu::after {
+    display: none;
+  }
+
+  .shareButton {
+    position: relative;
+    z-index: 20;
+  }
+}
