@@ -16,8 +16,9 @@ body {
     
     font-family: "Manrope", sans-serif;
     font-optical-sizing: auto;
-    font-weight: 400;
+    font-weight: 500;
     font-style: normal;
+    font-size: 13px;
 
     min-height: 100vh;
     background-color: var(--lightGrayishBlue);
@@ -52,31 +53,31 @@ img.article-image {
 }
 
 div.text {
-    padding: 0px;
     display: flex;
     flex: 1;
     flex-direction: column;
     justify-content: space-between;
+    gap: 20px;
 }
 
 div.upper {
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding: 20px 40px 20px 20px;
 }
 h2, p {
     margin: 20px;
 }
 
+h1, h2{
+    color: var(--veryDarkGrayishBlue);
+    font-weight: 700;
+}
 .articleLink {
     text-decoration: none;
     color: var(--veryDarkGrayishBlue);
 }
 
-h1 {
-    color: var(--veryDarkGrayishBlue);
-    font-weight: 800;
-}
 .articleLink:hover {
     color: var(--desaturatedDarkBlue);
 }
@@ -93,7 +94,7 @@ div.bottom {
     width: 100%;
     margin-top: auto;
     padding-left: 20px;  
-    padding-right: 20px;
+    padding-right: 40px;
 }
 
 div.author {
@@ -154,7 +155,7 @@ a.authorName {
 
 .shareMenu {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 20px;
   position: absolute;
   background: var(--veryDarkGrayishBlue);
@@ -172,7 +173,14 @@ a.authorName {
   transition: opacity 0.15s ease, transform 0.15s ease;
 }
 
-@media (min-width: 641px) {
+.shareMenu a svg,
+.systemShareButton svg {
+  display: block;           /* убирает возможные пробелы под inline-элементами */
+  width: 20px;              /* задай конкретный размер, если хочешь */
+  height: 20px;
+}
+
+@media (min-width: 641px) {         /*-----------------DESKTOP-----------------*/
   .shareWrapper {
     position: relative;
   }
@@ -207,8 +215,27 @@ a.authorName {
     border-radius: 2px;
   }
 }
+.systemShareButton {
+  width: 25px;        
+  height: 25px;
+  background-color: var(--desaturatedDarkBlue);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  display: inline-flex; 
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  padding: 1px; 
+}
 
-@media (max-width: 640px) {
+.systemShareButton:hover {
+  background-color: var(--lightGrayishBlue);
+  color: var(--veryDarkGrayishBlue);
+}
+
+@media (max-width: 640px) {             /*-----------------MOBILE-----------------*/
   div.container {
     flex-direction: column;
     width: 90vw;
@@ -253,8 +280,7 @@ a.authorName {
     pointer-events: none;
     z-index: 10;
   }
-
-  .shareMenu.active {
+    .shareMenu.active {
     transform: translateY(0);
     pointer-events: auto;
     transition: transform 0.3s ease;
