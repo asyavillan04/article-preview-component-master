@@ -120,7 +120,10 @@ div.authorInfo {
     color: var(--veryDarkGrayishBlue);
     font-weight: 800;
 }
-
+a.authorName {
+    text-decoration: none;
+    color: var(--veryDarkGrayishBlue);
+}
 .publishDate {
     font-size: 0.8125rem;
     color: var(--grayishBlue);
@@ -139,7 +142,7 @@ div.authorInfo {
     font-size: 16px;
     border-radius: 50%;
     z-index: 20;
-    position: absolute;
+    position: relative;
     vertical-align: middle;
 }
 
@@ -158,7 +161,6 @@ div.authorInfo {
   box-shadow: 0 10px 25px -5px var(--desaturatedDarkBlue);
   z-index: 10;
   pointer-events: none;
-  /* по умолчанию скрыто (без transition, чтобы не мешал) */
   opacity: 0;
   transform: scale(0.95);
 }
@@ -184,7 +186,7 @@ div.authorInfo {
     white-space: nowrap;
     padding: 10px 25px;
     opacity: 0;
-    transition: none; /* transition будет в .active */
+    transition: none;
   }
 
   .shareMenu.active {
@@ -211,6 +213,7 @@ div.authorInfo {
     flex-direction: column;
     width: 90vw;
     height: auto;
+    overflow: clip;
   }
 
   img.article-image {
@@ -223,8 +226,7 @@ div.authorInfo {
 
   div.bottom {
     position: relative;
-    overflow: hidden;
-    height: 80px;              /* фиксированная высота */
+    height: 80px;         
     display: flex;
     align-items: center;
     padding-left: 20px;
@@ -246,7 +248,7 @@ div.authorInfo {
     justify-content: center;
     gap: 20px;
     transform: translateY(100%);
-    opacity: 1;                /* всегда непрозрачно */
+    opacity: 0;         
     transition: none;
     pointer-events: none;
     z-index: 10;
@@ -266,4 +268,9 @@ div.authorInfo {
     position: relative;
     z-index: 20;
   }
+}
+
+footer.attribution {
+    font-size: 0.6875rem;
+    text-align: center;
 }
