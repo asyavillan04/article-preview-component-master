@@ -40,7 +40,6 @@ div.container {
     margin: auto;
     border-radius: var(--previewBorderRadius);
     box-shadow: 20px 50px 30px var(--shadow--);
-    /*position: relative;*/
 }    
 
 img.article-image {
@@ -63,23 +62,25 @@ div.text {
 div.upper {
     display: flex;
     flex-direction: column;
-    padding: 20px 40px 20px 20px;
-}
-h2, p {
-    margin: 20px;
+    padding: 40px 40px 20px 20px;
 }
 
 h1, h2{
     color: var(--veryDarkGrayishBlue);
     font-weight: 700;
 }
-.articleLink {
-    text-decoration: none;
-    color: var(--veryDarkGrayishBlue);
+
+h1, h2, p{
+   margin: 20px;
 }
 
-.articleLink:hover {
-    color: var(--desaturatedDarkBlue);
+.articleLink {
+    text-decoration: none;
+}
+
+.articleLink:hover h2,
+.articleLink:focus h2 {
+    color: var(--grayishBlue);
 }
 p {
     color: var(--desaturatedDarkBlue);
@@ -116,14 +117,16 @@ div.authorInfo {
     flex-direction: column;
 }
 
-.authorName {
-    font-size: 0.875rem;
-    color: var(--veryDarkGrayishBlue);
-    font-weight: 800;
-}
+
 a.authorName {
+    font-weight: 800;
     text-decoration: none;
     color: var(--veryDarkGrayishBlue);
+}
+
+.authorName:hover,
+.authorName:focus {
+  color: var(--grayishBlue);
 }
 .publishDate {
     font-size: 0.8125rem;
@@ -156,7 +159,7 @@ a.authorName {
 .shareMenu {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
   position: absolute;
   background: var(--veryDarkGrayishBlue);
   box-shadow: 0 10px 25px -5px var(--desaturatedDarkBlue);
@@ -164,6 +167,7 @@ a.authorName {
   pointer-events: none;
   opacity: 0;
   transform: scale(0.95);
+  font-weight: 700;
 }
 
 .shareMenu.active {
@@ -173,12 +177,38 @@ a.authorName {
   transition: opacity 0.15s ease, transform 0.15s ease;
 }
 
-.shareMenu a svg,
-.systemShareButton svg {
-  display: block;           /* убирает возможные пробелы под inline-элементами */
-  width: 20px;              /* задай конкретный размер, если хочешь */
-  height: 20px;
+.shareMenu button {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--lightGrayishBlue);
+  transition: color 0.2s;
 }
+
+.shareMenu button svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  stroke: currentColor;
+}
+
+.shareMenu button:hover,
+.shareMenu button:focus-visible {
+  color: var(--grayishBlue);
+  background: transparent;
+  outline: none;
+}
+
+.systemShareButton {
+  background: transparent !important;
+}
+
 
 @media (min-width: 641px) {         /*-----------------DESKTOP-----------------*/
   .shareWrapper {
@@ -186,13 +216,13 @@ a.authorName {
   }
 
   .shareMenu {
-    font-size: 50px;
+    font-size: 40px;
     border-radius: var(--previewBorderRadius);
     bottom: calc(100% + 12px);
     left: 50%;
     transform: translateX(-50%) scale(0.95);
     white-space: nowrap;
-    padding: 10px 25px;
+    padding: 5px 15px;
     opacity: 0;
     transition: none;
   }
@@ -214,25 +244,6 @@ a.authorName {
     background: var(--veryDarkGrayishBlue);
     border-radius: 2px;
   }
-}
-.systemShareButton {
-  width: 25px;        
-  height: 25px;
-  background-color: var(--desaturatedDarkBlue);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  display: inline-flex; 
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: background-color 0.2s;
-  padding: 1px; 
-}
-
-.systemShareButton:hover {
-  background-color: var(--lightGrayishBlue);
-  color: var(--veryDarkGrayishBlue);
 }
 
 @media (max-width: 640px) {             /*-----------------MOBILE-----------------*/
@@ -273,12 +284,13 @@ a.authorName {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: 5px;
     transform: translateY(100%);
     opacity: 0;         
     transition: none;
     pointer-events: none;
     z-index: 10;
+    justify-content: flex-start;
   }
     .shareMenu.active {
     transform: translateY(0);
