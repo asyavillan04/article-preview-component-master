@@ -62,7 +62,7 @@ turned out to be really important for animation to work the way i want.
 ### Continued development
 
 I want to learn how to make share links actually work, plus get better in making interactive elements. For now i search a lot when i use JS.
-
+Also i want to make language switcher.
 
 ### AI Collaboration
 
@@ -70,7 +70,7 @@ I used Deepseek for finding typos and minor mistakes. For brainstorming too, but
 
 ## Author
 
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
+- Frontend Mentor - [@asyavillan04](https://www.frontendmentor.io/profile/asyavillan04)
 
 ## Acknowledgments
 
