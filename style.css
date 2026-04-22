@@ -280,11 +280,10 @@ a.authorName {
     height: 100%;
     border-radius: 0 0 var(--previewBorderRadius) var(--previewBorderRadius);
     background: var(--veryDarkGrayishBlue);
-    padding: 10px 20px;
+    padding: 10px 10px;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
+    justify-content: flex-start;
+    gap: 0;
     transform: translateY(100%);
     opacity: 0;         
     transition: none;
